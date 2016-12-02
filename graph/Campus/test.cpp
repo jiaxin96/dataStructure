@@ -3,7 +3,7 @@
 #include<cstdio>  
 #include<string>  
 #include<map>  
-#define INF 100000  
+#define INF 100000
 #define get_min(a,b) ((a)<(b)?(a):(b))  
 using namespace std;  
   
@@ -17,7 +17,7 @@ void DJ(int n)
             if (g[i][k] < INF)  
                 for (int j = 1; j <= n; j++)  
                     if (g[k][j] < INF)  
-                        g[i][j] = get_min(g[i][j], g[i][k] + g[k][j]);  
+                        g[i][j] = get_min(g[i][j], g[i][k] + g[k][j]);
 }  
 int main()  
 {  
@@ -28,7 +28,7 @@ int main()
         for(int i=1;i<=200;i++)  
             for(int j=1;j<=200;j++)  
                 if(i!=j) g[i][j]=INF;  
-                else g[i][j]=0;  
+                else g[i][j]=0;
         int N,cnt=0;  
         cin>>N;  
         c.clear();  
