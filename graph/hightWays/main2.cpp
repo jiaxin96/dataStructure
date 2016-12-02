@@ -39,18 +39,19 @@ int main(int argc, char const *argv[])
 		for (int i = 0; i < n + 1; ++i) {
 			v[i] = i;
 		}
-		set<edge, MyCom> ee;
+		multiset<edge, MyCom> ee;
 		for (int i = 1; i <= n; ++i)
 		{
 			for (int j = 1; j <= n; ++j)
 			{
 				int ww;
 				scanf("%d", &ww);
+				if (j < i) continue;
 				ee.insert(edge(i, j, ww));
 			}
 		}
 		int max = 0;
-		for (set<edge, MyCom>::iterator it = ee.begin(); it != ee.end(); ++it) {
+		for (multiset<edge, MyCom>::iterator it = ee.begin(); it != ee.end(); ++it) {
 			int x = find_set((*it).p2, v);
 			int y = find_set((*it).p1, v);
 			if (x != y) {
