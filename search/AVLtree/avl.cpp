@@ -48,10 +48,11 @@ int TreeHeight(node * root)
             return j+1;
     }
 }
-void reFact(node &*  root) {
+void reFact(node *  root) {
     if (!root) return;
     int lh = TreeHeight(root->l);
     int rh = TreeHeight(root->r);
+    
 }
 int main() {
     int t = 0;
