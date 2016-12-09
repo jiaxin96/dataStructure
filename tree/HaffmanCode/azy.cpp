@@ -18,29 +18,38 @@ struct node {
   }
 };
 
+
+struct Cmp
+{
+        bool operator () ( node * const & x,  node * const & y) 
+        {
+                if (x->weight < y->weight)
+                        return true;
+                else
+                        return false;
+        }
+};
+
+
 int main(int argc, char const *argv[]) {
   int t;
   cin >> t;
-  std::set<node*> s;
+  int ans[26] = {0};
+  std::multiset<node*, Cmp> s;
+  // 输入点
   for (int i = 0; i < t; ++i) {
     char temp;
-    cin >> temp;
-    bool hasBeen = false;
-    for (set<node*>::iterator it = s.begin(); it != s.end(); ++it) {
-      if ((*it)->data == temp) {
-        (*it)->weight += 1;
-        hasBeen = true;
-        break;
-      }
-    }
-    if (!hasBeen) {
-      s.insert(new node(temp));
-    }
+    int cweight;
+    cin >> temp >> cweight;
+    s.insert(new node(temp,cweight));
   }
   node * root;
+
+  // 构建树 利用set自动排序
   while (s.size()) {
-    set<node*>::iterator it = s.begin();
-    set<node*>::iterator it2 = it++;
+    multiset<node*,Cmp>::iterator it = s.begin();
+    ++it;
+    multiset<node*,Cmp>::iterator it2 = it;
     it = s.begin();
     node * temp = new node('#',(*it)->weight + (*(it2))->weight, *it, *(it2));
     s.erase(it);
@@ -53,22 +62,29 @@ int main(int argc, char const *argv[]) {
       s.insert(temp);
     }
   }
+
+
+
+  // 层次遍历的到编码
   queue<node*> q;
   q.push(root);
+  int gggt = 0;
   while (q.size()) {
     node*temp = q.front();
     if(temp->data != '#') {
-      cout << temp->data << " " << temp->weight << " " << temp->hafmCode << endl;
+      // cout << temp->data << " " << temp->weight << " " << temp->hafmCode << endl;
+      gggt += (temp->weight) * ((temp->hafmCode).length());
     }
     q.pop();
     if (temp->rc) {
-      temp->rc->hafmCode += "1";
+      temp->rc->hafmCode = temp->hafmCode +  "1";
       q.push(temp->rc);
     }
     if (temp->lc) {
-      temp->lc->hafmCode += "0";
+      temp->lc->hafmCode =temp->hafmCode + "0";
       q.push(temp->lc);
     }
   }
+  cout << gggt << endl;
   return 0;
 }

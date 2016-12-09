@@ -23,21 +23,9 @@ int main(int argc, char const *argv[])
 		}
 		for (size_t i = n; i >= 1; i--)
 		{
-			if (mm[i].empty())
-			{
-				if (visit[i] > 0) continue;
-				else
-				{
-					visit[i]++;
-					ans.push_front(i);
-				}
-			}
-			else
-			{
-				if (!visit[i]) {
-					visit[i]++;
-					DFS(mm, visit, i, ans);
-				}
+			if (!visit[i]) {
+				visit[i]++;
+				DFS(mm, visit, i, ans);
 			}
 		}
 		for (list<int>::iterator it = ans.begin(); it != ans.end(); it++)
