@@ -10,7 +10,7 @@ int dfs(int u)
     c[u] = -1;  
     for(v = 1; v <= n; v++)  
         if(G[u][v])  
-        {  
+        {
             if(c[v] < 0) return 0;  
             else if(!c[v] && !dfs(v)) return 0;  
         }  
@@ -25,7 +25,7 @@ int toposort()
     memset(c,0,sizeof(c));  
     for(i = 1; i <= n; i++)  
         if(!c[i] && !dfs(i))  
-                return 0;  
+                return 0;
     return  1;  
 }  
 int main()  
