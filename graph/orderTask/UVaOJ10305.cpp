@@ -7,11 +7,8 @@ void DFS(vector< set<int, greater<int> > > &mm, vector<int> & visit, int num, li
 
 int main(int argc, char const *argv[])
 {
-	int t;
-	scanf("%d", &t);
-	while (t--) {
-		int n, m;
-		scanf("%d%d", &n, &m);
+	int n, m;
+	while (scanf("%d%d", &n, &m) && (n!=0 || m!=0)) {
 		vector< set<int, greater<int> > > mm(n+1);
 		vector<int> visit(n+1, 0);
 		list<int> ans;
@@ -58,3 +55,4 @@ void DFS(vector< set<int, greater<int> > > &mm, vector<int> & visit, int num, li
 	}
 	ans.push_front(num);
 }
+
