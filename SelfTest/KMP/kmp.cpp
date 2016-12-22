@@ -3,20 +3,33 @@
 using namespace std;
 #define max_sze 100
 
-void getNext(int *next, string & str) {
+void getNext(int *next, string & sstr) {
 	next[0] = -1;
 	int k = -1;
-	for (int i = 1; i < str.length(); ++i)
+	for (int i = 1; i < sstr.length(); ++i)
 	{
-		while (k >= 0 && str[i] != str[k + 1]) k = next[k];
-		if (str[i] == str[k+1]) k++;
+		while (k >= 0 && sstr[i] != sstr[k + 1]) k = next[k];
+		if (sstr[i] == sstr[k+1]) k++;
 		next[i] = k;
 	}
 }
 
 
-int com(string & mstr, string & str, int * next) {
-	
+int com(string & mstr, string & sstr, int * next) {
+	int p = -1;
+	for (int i = 0; i < mstr.length(); ++i)
+	{
+		while (p >= 0 && sstr[p + 1] != mstr[i]) {
+			p = next[p];
+		}
+		if (mstr[i] == sstr[p + 1]) {
+			p++;
+		}
+		if (p == sstr.length() - 1) {
+			return i - (sstr.length() - 1);
+		}
+	}
+	return -1;
 }
 
 
@@ -27,11 +40,12 @@ int main(int argc, char const *argv[])
 	while (t--) {
 		string mstr;
 		cin >> mstr;
-		string str;
-		cin >> str;
+		string sstr;
+		cin >> sstr;
 		int next[max_sze];
-		getNext(next, str);
-		int pos = com(mstr, str, next);
+		getNext(next, sstr);
+		cout << com(mstr, sstr, next) << endl;
+		int pos = com(mstr, sstr, next);
 	}
 	return 0;
 }
