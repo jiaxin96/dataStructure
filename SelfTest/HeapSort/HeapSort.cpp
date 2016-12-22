@@ -29,7 +29,7 @@ void swap(int *a, int n, int b) {
 }
 
 void Hsort(int *a, int  n) {
-	for (int i = n/2; i >= 0; --i)
+	for (int i = (n - 1)/2; i >= 0; --i)
 	{
 		init(a, i, n);
 	}
