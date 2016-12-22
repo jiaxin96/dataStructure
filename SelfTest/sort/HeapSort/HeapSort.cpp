@@ -44,18 +44,21 @@ void Hsort(int *a, int  n) {
 
 int main(int argc, char const *argv[])
 {
-	int a[100];
-	int n;
-	cin >> n;
-	for (int i = 0; i < n; ++i)
-	{
-		cin >> a[i];
+	int t;
+	cin >> t;
+	while (t--) {
+		int n;
+		cin >> n;
+		int a[n];
+		for (int i = 0; i < n; ++i)
+		{
+			cin >> a[i];
+		}
+		Hsort(a, n);
+		for (int i = 0; i < n; ++i)
+		{
+			cout << a[i] << endl;
+		}
 	}
-	Hsort(a, n);
-	for (int i = 0; i < n; ++i)
-	{
-		cout << a[i] << " ";
-	}
-	cout << endl;
 	return 0;
 }
