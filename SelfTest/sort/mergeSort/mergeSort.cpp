@@ -18,6 +18,9 @@ void merge(int *a, int pre, int pos, int *sorted) {
 		sorted[k++] = a[i++];
 	}
 
+	while (j <= pos) {
+		sorted[k++] = a[j++];
+	}
 
 	for (int i = pre; i <= pos; ++i)
 	{
