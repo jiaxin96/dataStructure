@@ -9,30 +9,29 @@ void swap(int *a, int n, int b) {
 }
 
 void splitSort(int * a, int strat, int end) {
-	if (strat > end) return;
+	if (strat >= end) return;    // ###和递归试有关 > 的时候进入start i-1  =的时候进入start i
 	int key = a[strat];
 	int i = strat;
 	int j = end;
-
+	//                     i+1
 	//         (<key)     key       (>= key)
 	// 6 6 2 6 6
-	while(i!=j) 
-	{ 
+	while(i < j)
+	{
          //顺序很重要，要先从右边开始找 
-		while(a[j] > key && i<j)
-			j--; 
-         //再找右边的 
+		while(a[j] >= key && i<j)
+			j--;
+         //再找右边的
 		while(a[i] < key && i<j)
 			i++;
-         //交换两个数在数组中的位置 
+         //交换两个数在数组中的位置
 		if(i<j)
 		{
 			swap(a, i, j);
-		} 
+		}
 	}
 
-
-	splitSort(a, strat, i);
+	splitSort(a, strat, i); // ###
 	splitSort(a, i+1, end);
 }
 
