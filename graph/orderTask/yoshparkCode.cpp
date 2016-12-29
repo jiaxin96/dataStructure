@@ -15,7 +15,7 @@ vector<int> nodes[1000001];
 
 int main()
 {
-
+    freopen("data", "r", stdin);
     int T;
     int n,m;
     scanf("%d",&T);

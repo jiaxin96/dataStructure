@@ -8,6 +8,7 @@ void DFS(vector< set<int, greater<int> > > &mm, vector<int> & visit, int num, li
 int main(int argc, char const *argv[])
 {
 	int t;
+	freopen("data", "r", stdin);
 	scanf("%d", &t);
 	while (t--) {
 		int n, m;
