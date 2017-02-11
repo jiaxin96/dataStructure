@@ -6,12 +6,14 @@ using namespace std;
 void getNext(int *next, string & sstr) {
 	next[0] = -1;
 	int k = -1;
+	cout << sstr.length() << endl;
 	for (int i = 1; i < sstr.length(); ++i)
 	{
 		while (k >= 0 && sstr[i] != sstr[k + 1]) k = next[k];
 		if (sstr[i] == sstr[k+1]) k++;
 		next[i] = k;
 	}
+	cout << "   ^&*   " << next[0];
 }
 
 

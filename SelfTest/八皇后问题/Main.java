@@ -75,6 +75,8 @@ public class Main {
 
 	static int numAns = 1;
 	
+
+	// 按列排列
 	public static void printMap() {
 		System.out.printf("No.%d\n", numAns++);
 		for (int i = 0; i < 8; ++i) {
